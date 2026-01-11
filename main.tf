@@ -3,8 +3,10 @@ module "agentcore_runtime" {
   agent_runtime_name    = "${var.agent_name}_${var.agent_env}"
   description           = var.agent_description
   network_mode          = var.network_mode
+  vpc_security_groups   = var.vpc_security_groups
+  vpc_subnets           = var.vpc_subnets
   environment_variables = var.environment_variables
-  agent_ecr_image_uri   = ""
+  agent_ecr_image_uri   = var.agent_ecr_image_uri
 }
 
 module "agentcore_runtime_endpoint" {

@@ -31,10 +31,28 @@ variable "agent_description" {
   default     = ""
 }
 
+variable "agent_ecr_image_uri" {
+  description = "URI of the ECR image for the agent"
+  type        = string
+  default     = ""
+}
+
 variable "network_mode" {
   description = "Network mode for the runtime (PUBLIC or VPC)"
   type        = string
   default     = "PUBLIC"
+}
+
+variable "vpc_security_groups" {
+  description = "Security groups associated with the VPC configuration. Required when network_mode is VPC."
+  type        = list(string)
+  default     = []
+}
+
+variable "vpc_subnets" {
+  description = "Subnets associated with the VPC configuration. Required when network_mode is VPC."
+  type        = list(string)
+  default     = []
 }
 
 variable "environment_variables" {

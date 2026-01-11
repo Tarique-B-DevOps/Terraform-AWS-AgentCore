@@ -43,7 +43,6 @@ resource "aws_bedrockagentcore_agent_runtime" "agent_runtime" {
   description        = var.description
   role_arn           = aws_iam_role.agent_runtime_role.arn
 
-
   agent_runtime_artifact {
     container_configuration {
       container_uri = var.agent_ecr_image_uri
@@ -51,9 +50,23 @@ resource "aws_bedrockagentcore_agent_runtime" "agent_runtime" {
   }
 
   network_configuration {
-    network_mode = "PUBLIC"
+    network_mode = var.network_mode
+    dynamic "network_mode_config" {
+      for_each = var.network_mode == "VPC" ? [1] : []
+      content {
+        security_groups = var.vpc_security_groups
+        subnets         = var.vpc_subnets
+      }
+    }
   }
 
   environment_variables = var.environment_variables
+
+  lifecycle {
+    precondition {
+      condition     = var.network_mode != "VPC" || (length(var.vpc_security_groups) > 0 && length(var.vpc_subnets) > 0)
+      error_message = "When network_mode is VPC, both vpc_security_groups and vpc_subnets must be provided and non-empty."
+    }
+  }
 }
 

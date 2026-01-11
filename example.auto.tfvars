@@ -1,12 +1,12 @@
 # agent info
-agent_name        = "CloudOps_Agent"
+agent_name        = "StrandsAgent"
 agent_description = "Strands Agent Powered by AWS Bedrock AgentCore"
 agent_env         = "Dev"
 agent_version     = "1.0.0"
 
 # Default tags
 tags = {
-  "Agent"       = "CloudOps_Agent",
+  "Agent"       = "StrandsAgent",
   "Framework"   = "Strands",
   "Environment" = "Dev"
   "Version"     = "1.0.0"
@@ -15,7 +15,10 @@ tags = {
 
 
 # Agentcore runtime configuration
-network_mode = "PUBLIC"
+agent_ecr_image_uri = "your-ecr-image-uri"
+network_mode        = "VPC"
+vpc_security_groups = ["your-vpc-security-group-id"]
+vpc_subnets         = ["your-vpc-subnet-id"]
 environment_variables = {
   "LOG_LEVEL" = "INFO"
 }
