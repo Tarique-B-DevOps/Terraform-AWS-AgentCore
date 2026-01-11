@@ -68,5 +68,10 @@ resource "aws_bedrockagentcore_agent_runtime" "agent_runtime" {
       error_message = "When network_mode is VPC, both vpc_security_groups and vpc_subnets must be provided and non-empty."
     }
   }
+
+  protocol_configuration {
+    server_protocol = var.server_protocol
+  }
+
 }
 

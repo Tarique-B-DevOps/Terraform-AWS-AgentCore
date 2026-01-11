@@ -4,6 +4,7 @@ module "agentcore_runtime" {
   description           = var.agent_description
   network_mode          = var.network_mode
   vpc_security_groups   = var.vpc_security_groups
+  server_protocol       = var.server_protocol
   vpc_subnets           = var.vpc_subnets
   environment_variables = var.environment_variables
   agent_ecr_image_uri   = var.agent_ecr_image_uri

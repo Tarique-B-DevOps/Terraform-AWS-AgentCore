@@ -18,6 +18,15 @@ variable "network_mode" {
   }
 }
 
+variable "server_protocol" {
+  description = "Protocol for the server"
+  type        = string
+  validation {
+    condition     = contains(["HTTP", "MCP", "A2A"], var.server_protocol)
+    error_message = "Server protocol must be either HTTP, MCP, or A2A."
+  }
+}
+
 variable "vpc_security_groups" {
   description = "Security groups associated with the VPC configuration. Required when network_mode is VPC."
   type        = list(string)

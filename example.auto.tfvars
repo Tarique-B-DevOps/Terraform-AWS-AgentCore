@@ -19,6 +19,7 @@ agent_ecr_image_uri = "your-ecr-image-uri"
 network_mode        = "VPC"
 vpc_security_groups = ["your-vpc-security-group-id"]
 vpc_subnets         = ["your-vpc-subnet-id"]
+server_protocol     = "HTTP"
 environment_variables = {
   "LOG_LEVEL" = "INFO"
 }

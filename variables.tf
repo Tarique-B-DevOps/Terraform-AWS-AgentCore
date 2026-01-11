@@ -55,6 +55,11 @@ variable "vpc_subnets" {
   default     = []
 }
 
+variable "server_protocol" {
+  description = "Protocol for the server"
+  type        = string
+}
+
 variable "environment_variables" {
   description = "Environment variables for the runtime"
   type        = map(string)
