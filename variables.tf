@@ -60,6 +60,22 @@ variable "server_protocol" {
   type        = string
 }
 
+variable "create_execution_role" {
+  description = "Whether to create a new IAM execution role. If false, execution_role_arn must be provided."
+  type        = bool
+}
+
+variable "execution_role_arn" {
+  description = "ARN of an existing IAM role to use for the agent runtime. Required when create_execution_role is false."
+  type        = string
+}
+
+variable "managed_policy_names" {
+  description = "List of AWS managed IAM policy names to attach to the execution role. ARNs will be constructed as 'arn:aws:iam::aws:policy/{name}'. Only used when create_execution_role is true."
+  type        = list(string)
+  default     = []
+}
+
 variable "environment_variables" {
   description = "Environment variables for the runtime"
   type        = map(string)
