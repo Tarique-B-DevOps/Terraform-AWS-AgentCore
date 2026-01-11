@@ -3,3 +3,5 @@
 **/*.tfstate
 **/*.tfstate.*
 **/STATE/
+terraform.auto.tfvars
+todo.txt
