@@ -1,4 +1,4 @@
-# Terraform AWS Bedrock AgentCore Modules | Infrastructure as Code
+# Terraform AWS Bedrock AgentCore Modules
 
 [![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=flat&logo=terraform&logoColor=white)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
@@ -82,6 +82,7 @@ The module creates an IAM role with the following permission sets:
 | **X-Ray Tracing** | `xray:PutTraceSegments`, `xray:PutTelemetryRecords`, `xray:GetSamplingRules`, `xray:GetSamplingTargets` | `*` |
 | **CloudWatch Metrics** | `cloudwatch:PutMetricData` | `*` (with namespace condition) |
 | **GetAgentAccessToken** | `bedrock-agentcore:GetWorkloadAccessToken`, `bedrock-agentcore:GetWorkloadAccessTokenForJWT`, `bedrock-agentcore:GetWorkloadAccessTokenForUserId` | Workload identity directories |
+| **AgentCoreMemoryAccess** | `bedrock-agentcore:CreateEvent`, `bedrock-agentcore:GetEvent`, `bedrock-agentcore:ListEvents`, `bedrock-agentcore:DeleteEvent`, `bedrock-agentcore:PutEvent`, `bedrock-agentcore:QueryMemory` | All memories in account (`memory/*`) |
 | **BedrockModelInvocation** | `bedrock:InvokeModel`, `bedrock:InvokeModelWithResponseStream` | Foundation models and account resources |
 
 #### Runtime Module Outputs

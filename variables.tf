@@ -68,6 +68,7 @@ variable "create_execution_role" {
 variable "execution_role_arn" {
   description = "ARN of an existing IAM role to use for the agent runtime. Required when create_execution_role is false."
   type        = string
+  default     = ""
 }
 
 variable "managed_policy_names" {

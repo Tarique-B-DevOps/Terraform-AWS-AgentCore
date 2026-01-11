@@ -154,6 +154,21 @@ resource "aws_iam_role_policy" "agent_runtime_policy" {
         ]
       },
       {
+        Sid    = "AgentCoreMemoryAccess"
+        Effect = "Allow"
+        Action = [
+          "bedrock-agentcore:CreateEvent",
+          "bedrock-agentcore:GetEvent",
+          "bedrock-agentcore:ListEvents",
+          "bedrock-agentcore:DeleteEvent",
+          "bedrock-agentcore:ListActors",
+          "bedrock-agentcore:ListSessions"
+        ]
+        Resource = [
+          "arn:aws:bedrock-agentcore:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:memory/*"
+        ]
+      },
+      {
         Sid    = "BedrockModelInvocation"
         Effect = "Allow"
         Action = [
